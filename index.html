@@ -1,5 +1,158 @@
-<!DOCTYPE html><html lang="en"><head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>Anime.js Learning Tool & Tutorials</title>    <script src="https://cdn.tailwindcss.com"></script>    <script src="https://cdn.jsdelivr.net/npm/animejs@4.0.0/anime.min.js"></script>    <style>        /* Custom skeumorphic styles with Tailwind extensions */        .neumorphic-btn {            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);            box-shadow: 4px 4px 8px #000000, -4px -4px 8px #242424;        }        .neumorphic-card {            background: #121212;            box-shadow: 6px 6px 12px #0a0a0a, -6px -6px 12px #1a1a1a;        }        .rainbow-gradient {            background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);        }    </style></head><body class="bg-black text-white font-sans min-h-screen flex flex-col">    <!-- Navigation -->    <nav class="sticky top-0 bg-black/80 backdrop-blur-md z-10 p-4 flex justify-between items-center shadow-lg">        <h1 class="text-2xl font-bold">Anime.js Hub</h1>        <ul class="flex space-x-4">            <li><a href="#home" class="neumorphic-btn px-4 py-2 rounded-full">Home</a></li>            <li><a href="#tutorials" class="neumorphic-btn px-4 py-2 rounded-full">Tutorials</a></li>            <li><a href="#playground" class="neumorphic-btn px-4 py-2 rounded-full">Playground</a></li>        </ul>    </nav>
-    <!-- Home Section -->    <section id="home" class="flex-1 flex flex-col items-center justify-center p-8">        <div class="text-center mb-8">            <h2 class="text-4xl font-bold mb-4">Learn & Build with Anime.js</h2>            <p class="text-lg">A tool and tutorial site for mastering Anime.js animations. Compose effects, see live previews, and export code.</p>        </div>        <!-- Hero Animation Inspired by Promo Video -->        <div id="hero-container" class="relative w-64 h-64">            <div id="dial" class="absolute inset-0 rounded-full rainbow-gradient opacity-0"></div>            <div id="dots" class="absolute inset-0 flex items-center justify-center">                <!-- 9 dots in 3x3 grid -->                <div class="grid grid-cols-3 gap-2">                    <div class="w-2 h-2 bg-red-500 rounded-full"></div>                    <div class="w-2 h-2 bg-red-500 rounded-full"></div>                    <div class="w-2 h-2 bg-red-500 rounded-full"></div>                    <div class="w-2 h-2 bg-red-500 rounded-full"></div>                    <div class="w-2 h-2 bg-red-500 rounded-full"></div>                    <div class="w-2 h-2 bg-red-500 rounded-full"></div>                    <div class="w-2 h-2 bg-red-500 rounded-full"></div>                    <div class="w-2 h-2 bg-red-500 rounded-full"></div>                    <div class="w-2 h-2 bg-red-500 rounded-full"></div>                </div>            </div>            <p id="hero-text" class="absolute bottom-0 text-center w-full text-sm opacity-0">Start Animating</p>        </div>    </section>
-    <!-- Tutorials Section -->    <section id="tutorials" class="p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 hidden">        <!-- Tutorial Cards -->        <div class="neumorphic-card p-6 rounded-lg">            <h3 class="text-2xl mb-2">Basics</h3>            <p>Learn to animate CSS properties like translate, scale, opacity.</p>            <div class="demo mt-4 w-20 h-20 bg-blue-500"></div>            <pre class="bg-gray-800 p-2 mt-2 text-sm overflow-auto"><code>anime({ targets: '.demo', translateX: 250 });</code></pre>        </div>        <div class="neumorphic-card p-6 rounded-lg">            <h3 class="text-2xl mb-2">Timelines</h3>            <p>Sequence animations with timelines.</p>            <div class="demo mt-4 flex space-x-2">                <div class="w-10 h-10 bg-green-500"></div>                <div class="w-10 h-10 bg-green-500"></div>            </div>            <pre class="bg-gray-800 p-2 mt-2 text-sm overflow-auto"><code>const tl = anime.timeline(); tl.add({ targets: '.demo', scale: 2 });</code></pre>        </div>        <div class="neumorphic-card p-6 rounded-lg">            <h3 class="text-2xl mb-2">Staggering</h3>            <p>Delay animations across elements.</p>            <div class="demo mt-4 grid grid-cols-3 gap-2">                <div class="w-8 h-8 bg-yellow-500"></div>                <div class="w-8 h-8 bg-yellow-500"></div>                <div class="w-8 h-8 bg-yellow-500"></div>            </div>            <pre class="bg-gray-800 p-2 mt-2 text-sm overflow-auto"><code>anime({ targets: '.demo', delay: anime.stagger(100) });</code></pre>        </div>        <div class="neumorphic-card p-6 rounded-lg">            <h3 class="text-2xl mb-2">Easings</h3>            <p>Use built-in easings like easeInOutQuad.</p>            <div class="demo mt-4 w-20 h-20 bg-purple-500"></div>            <pre class="bg-gray-800 p-2 mt-2 text-sm overflow-auto"><code>anime({ targets: '.demo', rotate: 360, easing: 'easeInOutSine' });</code></pre>        </div>        <div class="neumorphic-card p-6 rounded-lg">            <h3 class="text-2xl mb-2">SVG Animations</h3>            <p>Morph paths, draw lines.</p>            <svg class="demo mt-4 w-20 h-20" viewBox="0 0 100 100">                <path d="M0 0 L100 100" stroke="cyan" stroke-width="2" fill="none"></path>            </svg>            <pre class="bg-gray-800 p-2 mt-2 text-sm overflow-auto"><code>anime({ targets: 'path', strokeDashoffset: [anime.setDashoffset, 0] });</code></pre>        </div>        <div class="neumorphic-card p-6 rounded-lg">            <h3 class="text-2xl mb-2">Controls & Callbacks</h3>            <p>Play, pause, use promises.</p>            <div class="demo mt-4 w-20 h-20 bg-red-500"></div>            <pre class="bg-gray-800 p-2 mt-2 text-sm overflow-auto"><code>const anim = anime({ ... }); anim.play();</code></pre>        </div>        <!-- Add more for motion paths, etc. -->    </section>
-    <!-- Playground Section -->    <section id="playground" class="p-8 flex flex-col md:flex-row gap-6 hidden">        <div class="neumorphic-card p-6 flex-1">            <h3 class="text-2xl mb-4">Animation Composer</h3>            <form id="anim-form" class="space-y-4">                <select id="target" class="w-full p-2 bg-gray-800 rounded">                    <option>Circle</option>                    <option>Square</option>                    <option>Text</option>                </select>                <select id="property" class="w-full p-2 bg-gray-800 rounded">                    <option>translateX</option>                    <option>scale</option>                    <option>rotate</option>                    <option>opacity</option>                </select>                <input id="value" type="text" placeholder="Value (e.g., 250)" class="w-full p-2 bg-gray-800 rounded">                <select id="easing" class="w-full p-2 bg-gray-800 rounded">                    <option>easeInOutQuad</option>                    <option>easeInSine</option>                    <option>spring(1, 80, 10, 0)</option>                </select>                <input id="duration" type="number" placeholder="Duration (ms)" class="w-full p-2 bg-gray-800 rounded">                <div class="flex space-x-2">                    <button type="button" id="add-to-timeline" class="neumorphic-btn px-4 py-2 rounded">Add to Timeline</button>                    <button type="button" id="add-stagger" class="neumorphic-btn px-4 py-2 rounded">Add Stagger</button>                </div>            </form>            <button id="preview" class="mt-4 neumorphic-btn px-4 py-2 rounded w-full">Preview</button>            <button id="generate-code" class="mt-2 neumorphic-btn px-4 py-2 rounded w-full">Generate Code</button>            <pre id="code-output" class="bg-gray-800 p-2 mt-4 text-sm overflow-auto hidden"></pre>        </div>        <div class="flex-1 neumorphic-card p-6">            <h3 class="text-2xl mb-4">Preview</h3>            <div id="preview-area" class="w-full h-64 bg-gray-900 rounded flex items-center justify-center">                <div id="preview-circle" class="w-20 h-20 bg-blue-500 rounded-full"></div>                <div id="preview-square" class="w-20 h-20 bg-green-500 hidden"></div>                <p id="preview-text" class="text-xl hidden">Test Text</p>            </div>        </div>    </section>
-    <script src="script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime.js Learning Tool & Tutorials</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs@4.0.0/anime.min.js"></script>
+    <style>
+        /* Custom skeumorphic styles with Tailwind extensions */
+        .neumorphic-btn {
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            box-shadow: 4px 4px 8px #000000, -4px -4px 8px #242424;
+        }
+        .neumorphic-card {
+            background: #121212;
+            box-shadow: 6px 6px 12px #0a0a0a, -6px -6px 12px #1a1a1a;
+        }
+        .rainbow-gradient {
+            background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+        }
+    </style>
+</head>
+<body class="bg-black text-white font-sans min-h-screen flex flex-col">
+    <!-- Navigation -->
+    <nav class="sticky top-0 bg-black/80 backdrop-blur-md z-10 p-4 flex justify-between items-center shadow-lg">
+        <h1 class="text-2xl font-bold">Anime.js Hub</h1>
+        <ul class="flex space-x-4">
+            <li><a href="#home" class="neumorphic-btn px-4 py-2 rounded-full">Home</a></li>
+            <li><a href="#tutorials" class="neumorphic-btn px-4 py-2 rounded-full">Tutorials</a></li>
+            <li><a href="#playground" class="neumorphic-btn px-4 py-2 rounded-full">Playground</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="flex-1 flex flex-col items-center justify-center p-8">
+        <div class="text-center mb-8">
+            <h2 class="text-4xl font-bold mb-4">Learn & Build with Anime.js</h2>
+            <p class="text-lg">A tool and tutorial site for mastering Anime.js animations. Compose effects, see live previews, and export code.</p>
+        </div>
+        <!-- Hero Animation Inspired by Promo Video -->
+        <div id="hero-container" class="relative w-64 h-64">
+            <div id="dial" class="absolute inset-0 rounded-full rainbow-gradient opacity-0"></div>
+            <div id="dots" class="absolute inset-0 flex items-center justify-center">
+                <!-- 9 dots in 3x3 grid -->
+                <div class="grid grid-cols-3 gap-2">
+                    <div class="w-2 h-2 bg-red-500 rounded-full"></div>
+                    <div class="w-2 h-2 bg-red-500 rounded-full"></div>
+                    <div class="w-2 h-2 bg-red-500 rounded-full"></div>
+                    <div class="w-2 h-2 bg-red-500 rounded-full"></div>
+                    <div class="w-2 h-2 bg-red-500 rounded-full"></div>
+                    <div class="w-2 h-2 bg-red-500 rounded-full"></div>
+                    <div class="w-2 h-2 bg-red-500 rounded-full"></div>
+                    <div class="w-2 h-2 bg-red-500 rounded-full"></div>
+                    <div class="w-2 h-2 bg-red-500 rounded-full"></div>
+                </div>
+            </div>
+            <p id="hero-text" class="absolute bottom-0 text-center w-full text-sm opacity-0">Start Animating</p>
+        </div>
+    </section>
+
+    <!-- Tutorials Section -->
+    <section id="tutorials" class="p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 hidden">
+        <!-- Tutorial Cards -->
+        <div class="neumorphic-card p-6 rounded-lg">
+            <h3 class="text-2xl mb-2">Basics</h3>
+            <p>Learn to animate CSS properties like translate, scale, opacity.</p>
+            <div class="demo mt-4 w-20 h-20 bg-blue-500"></div>
+            <pre class="bg-gray-800 p-2 mt-2 text-sm overflow-auto"><code>anime({ targets: '.demo', translateX: 250 });</code></pre>
+        </div>
+        <div class="neumorphic-card p-6 rounded-lg">
+            <h3 class="text-2xl mb-2">Timelines</h3>
+            <p>Sequence animations with timelines.</p>
+            <div class="demo mt-4 flex space-x-2">
+                <div class="w-10 h-10 bg-green-500"></div>
+                <div class="w-10 h-10 bg-green-500"></div>
+            </div>
+            <pre class="bg-gray-800 p-2 mt-2 text-sm overflow-auto"><code>const tl = anime.timeline(); tl.add({ targets: '.demo', scale: 2 });</code></pre>
+        </div>
+        <div class="neumorphic-card p-6 rounded-lg">
+            <h3 class="text-2xl mb-2">Staggering</h3>
+            <p>Delay animations across elements.</p>
+            <div class="demo mt-4 grid grid-cols-3 gap-2">
+                <div class="w-8 h-8 bg-yellow-500"></div>
+                <div class="w-8 h-8 bg-yellow-500"></div>
+                <div class="w-8 h-8 bg-yellow-500"></div>
+            </div>
+            <pre class="bg-gray-800 p-2 mt-2 text-sm overflow-auto"><code>anime({ targets: '.demo', delay: anime.stagger(100) });</code></pre>
+        </div>
+        <div class="neumorphic-card p-6 rounded-lg">
+            <h3 class="text-2xl mb-2">Easings</h3>
+            <p>Use built-in easings like easeInOutQuad.</p>
+            <div class="demo mt-4 w-20 h-20 bg-purple-500"></div>
+            <pre class="bg-gray-800 p-2 mt-2 text-sm overflow-auto"><code>anime({ targets: '.demo', rotate: 360, easing: 'easeInOutSine' });</code></pre>
+        </div>
+        <div class="neumorphic-card p-6 rounded-lg">
+            <h3 class="text-2xl mb-2">SVG Paths</h3>
+            <p>Animate SVG paths with stroke-dashoffset.</p>
+            <div class="demo mt-4">
+                <svg width="80" height="80" viewBox="0 0 80 80">
+                    <path d="M10 10 L70 10 L70 70 L10 70 Z" stroke="white" stroke-width="4" fill="none" />
+                </svg>
+            </div>
+            <pre class="bg-gray-800 p-2 mt-2 text-sm overflow-auto"><code>anime({ targets: 'path', strokeDashoffset: [anime.setDashoffset, 0] });</code></pre>
+        </div>
+        <div class="neumorphic-card p-6 rounded-lg">
+            <h3 class="text-2xl mb-2">Playback Controls</h3>
+            <p>Pause, play, reverse, and seek animations.</p>
+            <div class="demo mt-4 w-20 h-20 bg-orange-500"></div>
+            <pre class="bg-gray-800 p-2 mt-2 text-sm overflow-auto"><code>anime({ targets: '.demo', autoplay: false }).play();</code></pre>
+        </div>
+    </section>
+
+    <!-- Playground Section -->
+    <section id="playground" class="p-8 flex flex-col md:flex-row gap-6 hidden">
+        <div class="neumorphic-card p-6 flex-1">
+            <h3 class="text-2xl mb-4">Animation Composer</h3>
+            <form id="anim-form" class="space-y-4">
+                <select id="target" class="w-full p-2 bg-gray-800 rounded">
+                    <option>Circle</option>
+                    <option>Square</option>
+                    <option>Text</option>
+                </select>
+                <select id="property" class="w-full p-2 bg-gray-800 rounded">
+                    <option>translateX</option>
+                    <option>scale</option>
+                    <option>rotate</option>
+                    <option>opacity</option>
+                </select>
+                <input id="value" type="text" placeholder="Value (e.g., 250)" class="w-full p-2 bg-gray-800 rounded">
+                <select id="easing" class="w-full p-2 bg-gray-800 rounded">
+                    <option>easeInOutQuad</option>
+                    <option>easeInSine</option>
+                    <option>spring(1, 80, 10, 0)</option>
+                </select>
+                <input id="duration" type="number" placeholder="Duration (ms)" class="w-full p-2 bg-gray-800 rounded">
+                <div class="flex space-x-2">
+                    <button type="button" id="add-to-timeline" class="neumorphic-btn px-4 py-2 rounded">Add to Timeline</button>
+                    <button type="button" id="add-stagger" class="neumorphic-btn px-4 py-2 rounded">Add Stagger</button>
+                </div>
+            </form>
+            <button id="preview" class="mt-4 neumorphic-btn px-4 py-2 rounded w-full">Preview</button>
+            <button id="generate-code" class="mt-2 neumorphic-btn px-4 py-2 rounded w-full">Generate Code</button>
+            <pre id="code-output" class="bg-gray-800 p-2 mt-4 text-sm overflow-auto hidden"></pre>
+        </div>
+        <div class="flex-1 neumorphic-card p-6">
+            <h3 class="text-xl mb-4">Preview</h3>
+            <div id="preview-area" class="h-64 bg-gray-800 rounded flex items-center justify-center">
+                <div id="preview-circle" class="w-16 h-16 bg-blue-500 rounded-full hidden"></div>
+                <div id="preview-square" class="w-16 h-16 bg-green-500 hidden"></div>
+                <div id="preview-text" class="text-2xl font-bold hidden">Text</div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
